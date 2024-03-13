@@ -1,0 +1,4 @@
+#include "Generated.xcconfig"
+
+# This file is used to configure the build for the Runner app.
+FLUTTER_ALLOW_PROVISIONING_UPDATES = YES

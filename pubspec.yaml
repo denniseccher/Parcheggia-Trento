@@ -1,0 +1,107 @@
+name: app_parcheggi
+description: A new Flutter project.
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  #Per la gestione dei file CSV
+  #To manage CSV files
+  csv: ^5.1.1
+
+  #Per l'estrazione da API e gestione file XML
+  #To extract from API and manage XML files
+  http: ^1.1.0
+  xml: ^6.1.0
+
+  #Per gestire meccanismi nazionali (ora, data, numeri)
+  #To manage international mechanism (time, date, number)
+  intl: ^0.18.1
+
+  #Per la geolocalizzazione del dispositivo
+  #For the device location
+  geolocator: ^10.1.0
+
+  #Per la gestione della mappa
+  #To manage maps
+  flutter_map: ^6.0.0
+  latlong2: ^0.9.0
+  flutter_compass: ^0.8.0
+  flutter_map_location_marker: ^8.0.2
+
+  flutter_launcher_icons: ^0.13.1
+
+  google_fonts: ^6.1.0
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+  url_launcher: ^6.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  
+  floor_generator: ^1.4.2
+  build_runner: ^2.1.2
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+fonts:
+  - family: Raleway
+    fonts:
+      - asset: assets/Raleway/Raleway-Regular.ttf
+      - asset: assets/Raleway/Raleway-Medium.ttf
+        style: normal
+        weight: 500
+      - asset: assets/Raleway/Raleway-MediumItalic.ttf
+        style: italic
+        weight: 500
+      - asset: assets/Raleway/Raleway-Italic.ttf
+        style: italic
+        weight: 400
+      - asset: assets/Raleway/Raleway-BoldItalic.ttf
+        style: italic
+        weight: 700
+      - asset: assets/Raleway/Raleway-Bold.ttf
+        style: normal
+        weight: 700
+      - asset: assets/Raleway/Raleway-SemiBold.ttf
+        style: normal
+        weight: 600
+      - asset: assets/Raleway/Raleway-SemiBoldItalic.ttf
+        style: italic
+        weight: 600
+      - asset: assets/Raleway/Raleway-ThinItalic.ttf
+        style: italic
+        weight: 300
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "path/to/image.png"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
+  windows:
+    generate: true
+    image_path: "path/to/image.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  macos:
+    generate: true
+    image_path: "path/to/image.png"

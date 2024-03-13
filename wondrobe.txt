@@ -1,0 +1,82 @@
+MAIN
+import 'package:flutter/material.dart';
+import 'package:wondrobe/screens/home.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(
+        useMaterial3: true,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+HOME
+import 'package:flutter/material.dart';
+import 'package:wondrobe/components/my_appbar.dart';
+import 'package:wondrobe/components/my_navbar.dart';
+
+class HomePage extends StatefulWidget{
+  const HomePage({super.key});
+  
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage>{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: myAppBar(),
+
+      bottomNavigationBar: myNavBar(),
+    );
+  }
+}
+
+NAVBAR
+import 'package:flutter/material.dart';
+
+class myNavBar extends StatelessWidget implements PreferredSizeWidget{
+  @override
+  Widget build(BuildContext context) {
+    return NavigationBar(destinations: const [
+      NavigationDestination(
+        icon: Icon(Icons.home),
+        label: "",
+      )
+    ],
+
+    );
+  }
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(100);
+
+}
+
+APPBAR
+import 'package:flutter/material.dart';
+
+class myAppBar extends StatelessWidget implements PreferredSizeWidget{
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+
+    );
+  }
+  
+  @override
+  Size get preferredSize => const Size.fromHeight(100);
+
+}
