@@ -18,7 +18,8 @@ PreferredSizeWidget myAppBar(BuildContext context, Function onFreeChanged){
       appTitle,
     ),
     centerTitle: true,
-    //Work in progress...
+    //Il pulsante info, che mostra un pop-up con le informazioni dell'app
+    //The info button, that shows a pop-up with the app info
     actions: [
       IconButton(
         onPressed: (){

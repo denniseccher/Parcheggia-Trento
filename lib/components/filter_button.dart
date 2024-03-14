@@ -36,20 +36,20 @@ class _FilterButtonState extends State<FilterButton> {
           onSelectionChanged: widget.onTypeChanged,
           //Questo è lo stile del bottone
           //This is the style of the button
-          style: ButtonStyle(
-            foregroundColor: MaterialStatePropertyAll(
-              Theme.of(context).colorScheme.onPrimaryContainer
-            ),
-            backgroundColor: MaterialStateProperty.resolveWith<Color>(
-              (states) {
-                if(states.contains(MaterialState.selected)){
-                  return Theme.of(context).colorScheme.primaryContainer;
-                }else{
-                  return Theme.of(context).colorScheme.primaryContainer.withOpacity(0.25);
-                }
-              }
-            )
-          ),
+          // style: ButtonStyle(
+          //   foregroundColor: MaterialStatePropertyAll(
+          //     Theme.of(context).colorScheme.onPrimaryContainer
+          //   ),
+          //   backgroundColor: MaterialStateProperty.resolveWith<Color>(
+          //     (states) {
+          //       if(states.contains(MaterialState.selected)){
+          //         return Theme.of(context).colorScheme.primaryContainer;
+          //       }else{
+          //         return Theme.of(context).colorScheme.primaryContainer.withOpacity(0.25);
+          //       }
+          //     }
+          //   )
+          // ),
           //I tre segmenti, che indicano le tre tipologie di sensore
           //The three segments, which indicate the three types of sensor
           segments: const [

@@ -1,4 +1,3 @@
-import 'package:app_parcheggi/classes/sensor.dart';
 import 'package:app_parcheggi/classes/streets.dart';
 import 'package:app_parcheggi/components/street_tile.dart';
 import 'package:app_parcheggi/variables/variables.dart';
@@ -32,15 +31,6 @@ class _DeveloperPageState extends State<DeveloperPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed:() {
-      //     setState(() {
-      //       loadSensor();
-      //     });
-      //   },
-      //   child: const Icon(Icons.update),
-      // ),
-      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         //I colori sono presi dal tema dell'app
         //The colors come from the app theme
