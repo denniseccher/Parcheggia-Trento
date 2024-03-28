@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 //Questo è il widget della AppBar
 //This is the AppBar widget
-PreferredSizeWidget myAppBar(BuildContext context, Function onFreeChanged){
+PreferredSizeWidget myAppBar(BuildContext context, Function onFreeChanged, Function(Locale) onLanguageChanged){
   return AppBar(
     //I colori sono presi dal tema dell'app
     //The colors come from the app theme
@@ -23,7 +23,7 @@ PreferredSizeWidget myAppBar(BuildContext context, Function onFreeChanged){
     actions: [
       IconButton(
         onPressed: (){
-          infoPopup(onFreeChanged, context);
+          infoPopup(onFreeChanged, context, onLanguageChanged);
         },
         icon: const Icon(Icons.info_outline)
       )

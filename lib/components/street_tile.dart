@@ -3,6 +3,7 @@ import 'package:app_parcheggi/classes/streets.dart';
 import 'package:app_parcheggi/variables/variables.dart';
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //Questo widget è il singolo elemento nella lista delle strade
 //This widget is the single element in the streets list
@@ -35,13 +36,13 @@ Widget StreetTile(Street street, Function(LatLng) function, BuildContext context
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              "Liberi: ${street.getLiberi(selectedType.first)}",
+              "${AppLocalizations.of(context)!.free}: ${street.getLiberi(selectedType.first)}",
               style: TextStyle(
                 color: Colors.green.shade800
               ),
             ),
             Text(
-              "Occupati: ${street.getOccupati(selectedType.first)}",
+              "${AppLocalizations.of(context)!.occupied}: ${street.getOccupati(selectedType.first)}",
               style: TextStyle(
                 color: Colors.red.shade800
               ),

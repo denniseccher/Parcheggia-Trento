@@ -1,8 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 import 'package:app_parcheggi/pages/developer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-Widget InfoPopup(String appTitle, Function(Uri) launchUrl, BuildContext context, bool activeFree, Function onFreeChanged){
+
+Widget InfoPopup(String appTitle, Function(Uri) launchUrl, BuildContext context, bool activeFree, Function onFreeChanged, Function(Locale) onLanguageChanged){
   //Il pop-up è un SimpleDialog
   //The pop-up is a SimpleDialog
   return SimpleDialog(
@@ -97,13 +99,17 @@ Widget InfoPopup(String appTitle, Function(Uri) launchUrl, BuildContext context,
                 return Center(
                   child: Column(
                     children: [
-                      const Text(
-                        "Vuoi visualizzare anche i parcheggi occupati?",
-                        style: TextStyle(
+                      Text(
+                        AppLocalizations.of(context)!.showOccupied,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
                           fontWeight: FontWeight.w600
                         ),
                       ),
-                      const Text("(Può peggiorare le prestazioni)"),
+                      Text(
+                        "(${AppLocalizations.of(context)!.showOccupiedDisclaimer})",
+                        textAlign: TextAlign.center,
+                      ),
                       Switch(
                         value: !activeFree,
                         onChanged:(value) {
@@ -112,6 +118,56 @@ Widget InfoPopup(String appTitle, Function(Uri) launchUrl, BuildContext context,
                             activeFree = !activeFree;
                           });
                         },
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+
+            const SizedBox(
+              height: 16,
+            ),
+            
+            StatefulBuilder(
+              builder:(context, setState) {
+                return Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            AppLocalizations.of(context)!.localeName == "it" ? Colors.green.shade200 : Colors.transparent
+                          )
+                        ),
+                        onPressed: () {
+                          onLanguageChanged(const Locale("it"));
+                        },
+                        icon: Text(
+                          "it".toUpperCase().replaceAllMapped(RegExp(r'[A-Z]'),(match) => String.fromCharCode(match.group(0)!.codeUnitAt(0) + 127397)),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStatePropertyAll(
+                            AppLocalizations.of(context)!.localeName == "en" ? Colors.green.shade200 : Colors.transparent
+                          )
+                        ),
+                        onPressed: () {
+                          onLanguageChanged(const Locale("en"));
+                        },
+                        icon: Text(
+                          "gb".toUpperCase().replaceAllMapped(RegExp(r'[A-Z]'),(match) => String.fromCharCode(match.group(0)!.codeUnitAt(0) + 127397)),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 24
+                          ),
+                        ),
                       ),
                     ],
                   ),

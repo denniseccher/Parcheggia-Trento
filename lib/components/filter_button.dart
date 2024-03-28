@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 import 'package:flutter/material.dart';
 import 'package:app_parcheggi/variables/variables.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //Questa classe rappresenta il bottone che filtra la tipologia di sensori
   //è Stateful in quanto deve cambiare stato durante l'esecuzione del programma
@@ -34,39 +35,24 @@ class _FilterButtonState extends State<FilterButton> {
           //Quando voglio cambiare il tipo eseguo la funzione
           //When I want to change the type I execute the function
           onSelectionChanged: widget.onTypeChanged,
-          //Questo è lo stile del bottone
-          //This is the style of the button
-          // style: ButtonStyle(
-          //   foregroundColor: MaterialStatePropertyAll(
-          //     Theme.of(context).colorScheme.onPrimaryContainer
-          //   ),
-          //   backgroundColor: MaterialStateProperty.resolveWith<Color>(
-          //     (states) {
-          //       if(states.contains(MaterialState.selected)){
-          //         return Theme.of(context).colorScheme.primaryContainer;
-          //       }else{
-          //         return Theme.of(context).colorScheme.primaryContainer.withOpacity(0.25);
-          //       }
-          //     }
-          //   )
-          // ),
+
           //I tre segmenti, che indicano le tre tipologie di sensore
           //The three segments, which indicate the three types of sensor
-          segments: const [
+          segments: [
             ButtonSegment(
               value: 0,
-              icon: Icon(Icons.local_parking),
-              label: Text("Linee blu")
+              icon: const Icon(Icons.local_parking),
+              label: Text(AppLocalizations.of(context)!.parking_blueLines)
             ),
             ButtonSegment(
               value: 1,
-              icon: Icon(Icons.accessible),
-              label: Text("Disabili")
+              icon: const Icon(Icons.accessible),
+              label: Text(AppLocalizations.of(context)!.parking_disabled)
             ),
             ButtonSegment(
               value: 2,
-              icon: Icon(Icons.local_shipping),
-              label: Text("Carico / scarico")
+              icon: const Icon(Icons.local_shipping),
+              label: Text(AppLocalizations.of(context)!.parking_loadunload)
             ),
           ],
         ),

@@ -1,0 +1,12 @@
+{
+    "parking_blueLines": "Linee blu",
+    "parking_disabled": "Disabili",
+    "parking_loadunload": "Carico / scarico",
+    "free": "Liberi",
+    "occupied": "Occupati",
+    "streets": "Strade",
+    "searchStreet": "Cerca una strada",
+    "close": "Chiudi",
+    "showOccupied": "Vuoi visualizzare anche i parcheggi occupati?",
+    "showOccupiedDisclaimer": "Può peggiorare le prestazioni"
+}

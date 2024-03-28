@@ -10,10 +10,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 
+
 //Questa è la HomePage dell'app
 //This is the app HomePage
 class HomePage extends StatefulWidget{
-  const HomePage({super.key});
+  final Function(Locale) changeLanguage;
+
+  const HomePage({super.key, required this.changeLanguage});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -64,7 +67,8 @@ class _HomePageState extends State<HomePage> {
   //Funzione per aggiornare lo stato dei sensori
   //Function to update the state of the sensors
   void _updateSensors(){
-    setState((){});
+    setState((){
+    });
   }
 
   //Funzione per mostrare il popup con la lista delle strade
@@ -73,11 +77,6 @@ class _HomePageState extends State<HomePage> {
     popUpStrade(context, mapController);
   }
 
-  void _update(value){
-    setState(() {
-      
-    });
-  }
   
   @override
   Widget build(BuildContext context) {
@@ -87,6 +86,7 @@ class _HomePageState extends State<HomePage> {
       appBar: myAppBar(
         context,
         _myFree,
+        widget.changeLanguage,
       ),
       //Il body è una column
       //The body is a column

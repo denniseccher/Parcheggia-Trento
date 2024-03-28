@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:app_parcheggi/classes/sensor.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 Future<void> _launchUrl(Uri url) async {
   if (!await launchUrl(url)) {
@@ -94,7 +95,7 @@ void sensorPopup(BuildContext context, Sensor sensor){
 }
 
 
-void infoPopup(Function onFreeChanged, BuildContext contesto){
+void infoPopup(Function onFreeChanged, BuildContext contesto, Function(Locale) onLanguageChanged){
   //Ora mostro il dialogo a schermo
   //Now I can show the dialog
   showDialog(
@@ -109,7 +110,8 @@ void infoPopup(Function onFreeChanged, BuildContext contesto){
         _launchUrl,
         context,
         onlyFree,
-        onFreeChanged
+        onFreeChanged,
+        onLanguageChanged,
       );
     },
   ); 
@@ -126,7 +128,7 @@ void popUpStrade(BuildContext context, MapController joystickMappa) async {
         // Title with bold and centered text
         Center(
           child: Text(
-            'Strade'.toUpperCase(),
+            AppLocalizations.of(context)!.streets.toUpperCase(),
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
@@ -141,18 +143,17 @@ void popUpStrade(BuildContext context, MapController joystickMappa) async {
         ),
 
         // Close button with a bold red color
-        SimpleDialogOption(
-          child: const Center(
-            child: Text(
-              'Chiudi',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.red
-              )
-            )
-          ),
-          onPressed: () => Navigator.of(context).pop(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              color: Colors.red,
+            ),
+          ],
         ),
       ],
     ),

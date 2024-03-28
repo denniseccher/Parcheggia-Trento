@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:app_parcheggi/functions/position.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 //Questa è la classe della lista di strade
 //This is the class of the street list
@@ -58,13 +59,13 @@ class _StreetListState extends State<StreetList> {
               //With a TextField to search streets
               child: TextField(
                 onChanged: filterSensors,
-                decoration: const InputDecoration(
-                  hintText: "Cerca una strada...",
-                  prefixIcon: Icon(
+                decoration: InputDecoration(
+                  hintText: "${AppLocalizations.of(context)!.searchStreet}...",
+                  prefixIcon: const Icon(
                     Icons.search,
                     color: Colors.black,
                   ),
-                  border: OutlineInputBorder(
+                  border: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(64.0))
                   ),
                 ),

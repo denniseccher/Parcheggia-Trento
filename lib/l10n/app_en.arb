@@ -1,0 +1,12 @@
+{
+    "parking_blueLines": "Blue lines",
+    "parking_disabled": "Disabled",
+    "parking_loadunload": "Load / unload",
+    "free": "Free",
+    "occupied": "Occupied",
+    "streets": "Streets",
+    "searchStreet": "Search for a street",
+    "close": "Close",
+    "showOccupied": "Do you want to see the occupied parkings, too?",
+    "showOccupiedDisclaimer": "It may worsen performances"
+}
