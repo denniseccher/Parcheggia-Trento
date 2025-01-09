@@ -14,7 +14,6 @@ class Map extends StatefulWidget{
 
   const Map({super.key, required this.mapController, required this.onlyFree});
   
-
   @override
   State<Map> createState() => _MapState();
 }
@@ -78,7 +77,8 @@ class _MapState extends State<Map> {
 
               //I Marker dei sensori
               //The sensors' Marker
-              myMarkers(widget.onlyFree)
+              // myMarkers(widget.onlyFree),
+              SensorWidget(onlyFree: widget.onlyFree)
             ],
           ),
         )

@@ -4,7 +4,7 @@ import 'package:flutter_map/flutter_map.dart';
 
 //Questo widget rappresenta i pulsanti 'Azione' in basso allo schermo
 //This widget represents the 'Action' buttons on the button of the screen 
-Widget ActionButtons(Function() function1, Function() function2, Function() function3, MapController mapController, BuildContext context){
+Widget ActionButtons(Function() function1, Function() function3, MapController mapController, BuildContext context){
   return Padding(
     padding: const EdgeInsets.all(8.0),
     //I pulsanti sono in una Row e sono equalmente spaziati
@@ -24,14 +24,14 @@ Widget ActionButtons(Function() function1, Function() function2, Function() func
         ),
         //Il secondo pulsante serve ad aggiornare lo stato dei sensori
         //The second button is used to update the state of the sensors
-        FloatingActionButton(
-          // foregroundColor: Theme.of(context).colorScheme.onPrimary,
-          elevation: 4,
-          onPressed: function2,
-          child: const Icon(
-            Icons.update
-          ),
-        ),
+        // FloatingActionButton(
+        //   // foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        //   elevation: 4,
+        //   onPressed: function2,
+        //   child: const Icon(
+        //     Icons.update
+        //   ),
+        // ),
         //Il terzo pulsante serve a mostrare la lista delle strade
         //The third button is used to show the streets list
         FloatingActionButton(

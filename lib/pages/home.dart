@@ -66,10 +66,10 @@ class _HomePageState extends State<HomePage> {
 
   //Funzione per aggiornare lo stato dei sensori
   //Function to update the state of the sensors
-  void _updateSensors(){
-    setState((){
-    });
-  }
+  // void _updateSensors(){
+  //   setState((){
+  //   });
+  // }
 
   //Funzione per mostrare il popup con la lista delle strade
   //Function to show the poput with the streets list
@@ -107,7 +107,6 @@ class _HomePageState extends State<HomePage> {
           //The action buttons
           ActionButtons(
             _onClickPosition,
-            _updateSensors,
             _streetsList,
             mapController,
             context

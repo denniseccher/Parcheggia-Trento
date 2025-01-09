@@ -39,7 +39,7 @@ class SensorState{
 Future<List<SensorState>> loadState() async{
   // Attendo di ottenere la risposta HTTP dal URL della API
   // Waiting to obtain the HTTP response from the API
-  String urlAPI = 'https://dss.tnlab.smartcommunitylab.it/services/t/comunetn.main/parcheggi/sensori_last';
+  String urlAPI = 'https://dss.comune.trento.it/services/parcheggi/sensori_last';
   final response = await http.get(Uri.parse(urlAPI));
 
   // Creo una Lista di SensorState

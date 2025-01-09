@@ -1,5 +1,7 @@
 //Importazione delle mie classi
 //Importing of my classes
+import 'dart:async';
+
 import 'package:app_parcheggi/classes/sensor_properties.dart';
 import 'package:app_parcheggi/classes/sensor_state.dart';
 import 'package:app_parcheggi/variables/variables.dart';
@@ -99,4 +101,60 @@ Future<List<Sensor>> loadSensor() async {
   // Restituisco la lista popolata di Sensor
   // Return of the list full of Sensor
   return listSensor;
+}
+
+class SensorService {
+  // Creiamo un StreamController che gestirà il flusso di dati per i sensori
+  final StreamController<List<Sensor>> _sensorStreamController = StreamController<List<Sensor>>.broadcast();
+
+  // Funzione per ottenere lo stream
+  Stream<List<Sensor>> get sensorStream => _sensorStreamController.stream;
+
+  // Funzione per caricare i sensori periodicamente
+  Future<void> loadSensor() async {
+    try {
+      // Carica i dati subito la prima volta
+      await _loadAndEmitSensors();
+
+      // Usa un Timer periodico per aggiornare i dati ogni X secondi
+      Timer.periodic(const Duration(seconds: 5), (timer) async {
+        print("Update\n");
+        await _loadAndEmitSensors();
+      });
+    } catch (e) {
+      // In caso di errore, invia l'errore al flusso
+      _sensorStreamController.addError(e);
+    }
+  }
+
+  // Funzione privata per caricare e inviare i dati al flusso
+  Future<void> _loadAndEmitSensors() async {
+    List<Sensor> listSensor = [];
+    List<SensorProperties>? sensorProperties = await loadProperties();
+    List<SensorState>? sensorState = await loadState();
+
+    for (var i in streetsList) {
+      streetsList.firstWhere((element) => element.streetCode == i.streetCode).p_liberi = [0, 0, 0];
+      streetsList.firstWhere((element) => element.streetCode == i.streetCode).p_occupati = [0, 0, 0];
+    }
+
+    for (SensorProperties i in sensorProperties) {
+      SensorState tempState = sensorState.firstWhere((element) => element.id == i.getId());
+      listSensor.add(Sensor(i.id, i.type, i.latitude, i.longitude, i.streetCode, i.streetName, tempState.getState(), tempState.getTs(), tempState.getDate(), tempState.getTime()));
+
+      if (tempState.getState() == 0) {
+        streetsList.firstWhere((element) => element.streetCode == i.streetCode).addLiberi(i.type);
+      } else {
+        streetsList.firstWhere((element) => element.streetCode == i.streetCode).addOccupati(i.type);
+      }
+    }
+
+    // Invia i nuovi dati nel flusso
+    _sensorStreamController.sink.add(listSensor);
+  }
+
+  // Chiudi il controller quando non è più necessario
+  void dispose() {
+    _sensorStreamController.close();
+  }
 }
